@@ -71,12 +71,12 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     self._placeholderTextView.textColor = [UIColor colorWithWhite:0.7f alpha:0.7f];
     self._placeholderTextView.textAlignment = self.textAlignment;
     self._placeholderTextView.editable = NO;
-    self._placeholderTextView.scrollEnabled = NO;
-    self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
     self._placeholderTextView.isAccessibilityElement = NO;
     self._placeholderTextView.contentOffset = self.contentOffset;
     self._placeholderTextView.contentInset = self.contentInset;
+
+    [self._placeholderTextView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(becomeFirstResponder)]];
 
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
